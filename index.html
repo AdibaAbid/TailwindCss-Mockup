@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Banquet</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        .carousel-open:checked+.carousel-item {
+            position: static;
+            opacity: 100;
+        }
+        
+        .carousel-item {
+            -webkit-transition: opacity 0.6s ease-out;
+            transition: opacity 0.6s ease-out;
+        }
+        
+        #carousel-1:checked~.control-1,
+        #carousel-2:checked~.control-2,
+        #carousel-3:checked~.control-3 {
+            display: block;
+        }
+        
+        .carousel-indicators {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            bottom: 2%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        #carousel-1:checked~.control-1~.carousel-indicators li:nth-child(1) .carousel-bullet,
+        #carousel-2:checked~.control-2~.carousel-indicators li:nth-child(2) .carousel-bullet,
+        #carousel-3:checked~.control-3~.carousel-indicators li:nth-child(3) .carousel-bullet {
+            color: #2b2c06;
+            /*Set to match the Tailwind colour you want the active one to be */
+        }
+        
+        nav .drop-down ul {
+            opacity: 0;
+        }
+        
+        nav ul li:hover ul {
+            opacity: 1;
+        }
+    </style>
+
+</head>
+
+<body class="bg-white font-sans leading-normal tracking-normal">
+
+    <!-- top-header -->
+    <header>
+        <div class="section-top">
+            <div class=" hamburger-show hidden md:none lg:block">
+                <p class="italic bg-yellow-800 px-12 py-4 text-gray-200 border-b border-gray-300">463 Lyon Avenue Milford, United state 01757 | +180-123-4567 | info@kitchen.com</p>
+                <nav class="text-center uppercase bg-yellow-800 px-12 py-4 text-gray-200">
+                    <ul class="flex justify-between">
+                        <li class="uppercase text-yellow-200 px-4 py-2 hover:bg-yellow-600 hover:text-yellow-100 text-sm ">home </li>
+                        <li class="drop-down relative"><a href="#" class="uppercase text-yellow-200 px-4 py-2 hover:bg-yellow-600 hover:text-yellow-100 text-sm">Banquets <i class=" ml-2 text-xs fa fa-chevron-down" aria-hidden="true"></i></a>
+                            <ul class=" bg-white absolute mt-1 w-32 text-yellow-700 text-left text-xs italic p-2 ">
+                                <li class="flex flex-col w-auto">
+                                    <a href="#" class=" hover:bg-yellow-600 px-3 py-3 -mx-2 -mt-2 hover:text-yellow-200">Banquet List</a>
+                                </li>
+                                <li class="flex flex-col w-auto">
+                                    <a href="#" class=" hover:bg-yellow-600 px-3 py-3 -mx-2 -mt-2 hover:text-yellow-200">Single Banquet</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="drop-down relative"><a href="#" class="uppercase text-yellow-200 px-4 py-2 hover:bg-yellow-600 hover:text-yellow-100 text-sm">Rooms <i class=" ml-2 text-xs fa fa-chevron-down" aria-hidden="true"></i></a>
+                            <ul class=" bg-white absolute mt-1 w-32 text-yellow-700 text-left text-xs italic p-2 ">
+                                <li class="flex flex-col w-auto">
+                                    <a href="#" class=" hover:bg-yellow-600 px-3 py-3 -mx-2 -mt-2 hover:text-yellow-200">Room List</a>
+                                </li>
+                                <li class="flex flex-col w-auto">
+                                    <a href="#" class=" hover:bg-yellow-600 px-3 py-3 -mx-2 -mt-2 hover:text-yellow-200">single Room</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="uppercase text-yellow-200 px-4 py-2 hover:bg-yellow-600 hover:text-yellow-100 text-sm ">Kitchen Menu</li>
+                        <li class="uppercase text-yellow-200 px-4 py-2 hover:bg-yellow-600 hover:text-yellow-100 text-sm ">About</li>
+                        <li class="drop-down relative"><a href="#" class="uppercase text-yellow-200 px-4 py-2 hover:bg-yellow-600 hover:text-yellow-100 text-sm">Blog <i class=" ml-2 text-xs fa fa-chevron-down" aria-hidden="true"></i></a>
+                            <ul class=" bg-white absolute mt-1 w-32 text-yellow-700 text-left text-xs italic p-2 ">
+                                <li class="flex flex-col w-auto">
+                                    <a href="#" class=" hover:bg-yellow-600 px-3 py-3 -mx-2 -mt-2 hover:text-yellow-200">Blog Default</a>
+                                </li>
+                                <li class="flex flex-col w-auto">
+                                    <a href="#" class=" hover:bg-yellow-600 px-3 py-3 -mx-2 -mt-2 hover:text-yellow-200">Blog Single</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="uppercase text-yellow-200 px-4 py-2 hover:bg-yellow-600 hover:text-yellow-100 text-sm mx-4">Pages</li>
+                        <li class="uppercase text-yellow-200 px-4 py-2 hover:bg-yellow-600 hover:text-yellow-100 text-sm mx-4">Contact</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="section-bottom w-full px-4 py-3 mt-3 justify-center ">
+            <div class="flex justify-between lg:mx-12">
+                <div class="logo">
+                    <img class="mt-2" src="images/Logo.png" alt="Kitchen Logo">
+                </div>
+                <div>
+                    <button class="hamburger p-3 focus:outline-none border-2 border-yellow-800 hover:bg-yellow-800 hover:text-white text-yellow-800 text-centered">
+                    <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
+                </svg>
+                </button>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <!-- top-header-end -->
+
+
+
+
+    <main>
+        <!-- carousel part -->
+        <div class="carousel relative shadow-2xl bg-white">
+            <div class="carousel-inner relative overflow-hidden w-full " style="height:60vh;">
+                <!--Slide 1-->
+                <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+                <div class="carousel-item absolute opacity-0" style="height:60vh;">
+                    <div class="w-full h-full">
+                        <img class="h-full lg:h-auto" src=" images/Carousel 1.jpg" alt="image-1">
+                    </div>
+                    <div class="block z-10 font-bold absolute mt-10 top-0 h-49 w-7/12 lg:w-1/3 ml-20 lg:ml-24 lg:m-30 p-4 lg:p-8 bg-white text-center lg:text-left lg:text-3xl text-2xl">
+                        <h1 class="uppercase">Kitchen Restaurant</h1>
+                        <h1 class="uppercase">Website Template</h1>
+                        <p class="italic text-gray-800 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ratione possimus veritatis ex, aliquam iusto cumque dolor </p>
+                        <button class="border-2 border-green-900 px-2 py-3 mb-4 mt-4 text-green-800 text-lg">Kitchen Template</button>
+                    </div>
+                </div>
+
+                <label for="carousel-3" class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white bg-white hover:bg-yellow-800 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+                <label for="carousel-2" class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white bg-white hover:bg-yellow-800 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+
+                <!--Slide 2-->
+                <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+                <div class="carousel-item absolute opacity-0" style="height:60vh;">
+                    <div class="w-full h-full">
+                        <img class="h-full lg:h-auto" src="images/carousel 2.jpg" alt="image-2">
+                    </div>
+                    <div class="block z-10 font-bold absolute mt-10 top-0 h-49 w-7/12 lg:w-1/3 lg:m-30  ml-20 lg:ml-24 p-4 lg:p-8 bg-white text-center lg:text-left lg:text-3xl text-2xl">
+                        <h1 class="uppercase">Hotel Website</h1>
+                        <h1 class="uppercase">Template</h1>
+                        <p class="italic text-gray-800 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ratione possimus veritatis ex, aliquam iusto cumque dolor </p>
+                        <button class="border-2 border-green-900 px-2 py-3 mb-4 mt-4 text-green-800 text-lg">Download Template</button>
+                    </div>
+                </div>
+
+                <label for="carousel-1" class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white bg-white hover:bg-yellow-800 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+                <label for="carousel-3" class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white bg-white hover:bg-yellow-800 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+
+                <!--Slide 3-->
+                <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+                <div class="carousel-item absolute opacity-0" style="height:60vh;">
+                    <div class="w-full h-full">
+                        <img class="h-full  lg:h-auto" src="images/Carousel 3.jpg" alt="image-3">
+                    </div>
+                    <div class="block z-10 font-bold absolute mt-10 top-0 h-49 w-7/12 lg:w-1/3 ml-20 lg:m-30 lg:ml-24 lg:p-8 p-4 bg-white text-center lg:text-left lg:text-3xl text-2xl">
+                        <h1 class="uppercase">World Class Dining</h1>
+                        <h1 class="uppercase">& Delicious Food</h1>
+                        <p class="italic text-gray-800 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ratione possimus veritatis ex, aliquam iusto cumque dolor </p>
+                        <button class="border-2 border-green-900 px-2 py-3 mb-4 mt-4 text-green-800 text-lg">Make A Reservation</button>
+                    </div>
+                </div>
+                <label for="carousel-2" class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white  bg-white hover:bg-yellow-800 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+                <label for="carousel-1" class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white  bg-white hover:bg-yellow-800 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+
+                <!-- Add additional indicators for each slide-->
+                <ol class="carousel-indicators">
+                    <li class="inline-block mr-3">
+                        <label for="carousel-1" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                    </li>
+                    <li class="inline-block mr-3">
+                        <label for="carousel-2" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                    </li>
+                    <li class="inline-block mr-3">
+                        <label for="carousel-3" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                    </li>
+                </ol>
+
+            </div>
+        </div>
+        <!-- carousel part end -->
+
+        <!-- service section -->
+        <div class="container flex flex-col md:flex-wrap md:flex-row md:p-12 lg:ml-2 lg:mr-3 lg:flex-row lg:flex-no-wrap p-20">
+            <div class="card-1 flex-col w-full md:w-5/12 lg:w-1/3 bg-white border border-yellow-700 hover:bg-pink-100 text-center mt-6 ml-3 p-8">
+                <div class=" uppercase font-bold text-2xl px-6 py-6">
+                    <h1>Banquets</h1>
+                </div>
+                <div class=" m-0 items-center pt-3 pb-3 text-center inline-block">
+                    <img class="rounded-full" src="images/service-img 1.jpg" alt="Card image-1">
+                </div>
+                <div class="italic text-gray-800 text-lg pb-3 pt-4">
+                    <p>Quisque necerat blandi sceleris sesqueafacili venenatis</p>
+                </div>
+                <div class="pt-3 pb-3">
+                    <a href="#" class="uppercase text-blue-900 text-base font-semibold">Visit Our Banquets</a>
+                </div>
+            </div>
+
+            <div class="card-2 w-full md:w-6/12 lg:w-1/3 flex-col bg-white border border-yellow-700 text-center mt-6 hover:bg-pink-100 ml-3 p-8">
+                <div class=" uppercase font-bold text-2xl px-6 py-6">
+                    <h1>Kitchen Menu</h1>
+                </div>
+                <div class=" m-0 items-center pt-3 pb-3 text-center inline-block">
+                    <img class="rounded-full" src="images/srvice img 2.jpg" alt="Card image-1">
+                </div>
+                <div class="italic text-gray-800 text-lg pb-3 pt-4">
+                    <p>Quisque necerat blandi sceleris sesqueafacili venenatis</p>
+                </div>
+                <div class="pt-3 pb-3">
+                    <a href="#" class="uppercase text-blue-900 text-base font-semibold">Visit Menu List</a>
+                </div>
+            </div>
+
+            <div class="card-3 w-full md:w-5/12 lg:w-1/3 flex-col bg-white border border-yellow-700 hover:bg-pink-100 text-center mt-6 ml-3 p-8 md:p-4">
+                <div class=" uppercase font-bold text-2xl px-6 py-6">
+                    <h1>Hotel Rooms</h1>
+                </div>
+                <div class=" items-center pt-3 pb-3 text-center inline-block">
+                    <img class="rounded-full" src="images/service-img 3.jpg" alt="Card image-1">
+                </div>
+                <div class="italic text-gray-800 text-lg pb-3 pt-4">
+                    <p>Quisque necerat blandi sceleris sesqueafacili venenatis</p>
+                </div>
+                <div class="pt-3 pb-3">
+                    <a href="#" class="uppercase text-blue-900 text-base font-semibold">Visit Our Rooms</a>
+                </div>
+            </div>
+        </div>
+        <!-- service section end  -->
+
+        <!-- Amenities section -->
+        <section class="bg-yellow-100 px-10 py-16 flex w-full flex-wrap justify-between  lg:flex-no-wrap">
+            <div class="w-1/2 md:w-1/3">
+                <h1 class="font-semibold text-2xl -mt-12 pb-6 mb-0">Our Amenities</h1>
+                <div class="text-blue-200">
+                    <img class="h-20" src="images/construction.svg" alt="House plan">
+                </div>
+                <p class="italic text-sm text-gray-800 font-semibold pt-4 pb-6 leading-loose">Security surveillance<br>(24 Hours)</p>
+            </div>
+            <div class="w-1/2 md:w-1/3">
+                <div class="text-blue-200">
+                    <img class="h-20" src="images/security-guard.svg" alt="House plan">
+                </div>
+                <p class="italic text-sm text-gray-800 font-semibold pt-4 pb-6 leading-loose">Elegant & Luxurious <br>Interiors.</p>
+            </div>
+            <div class="w-1/2 md:w-1/3">
+                <div class="text-blue-200">
+                    <img class="h-20" src="images/resort.svg" alt="House plan">
+                </div>
+                <p class="italic text-sm text-gray-800 font-semibold pt-4 pb-6 leading-loose">Newly well designed 4 <br>banquet</p>
+            </div>
+            <div class="w-1/2 md:w-1/3">
+                <div class="text-blue-200">
+                    <img class="h-20" src="images/theater (1).svg" alt="House plan">
+                </div>
+                <p class="italic text-sm text-gray-800 font-semibold pt-4 pb-6 leading-loose">Professional floral &<br> decorators</p>
+            </div>
+            <div class="w-1/2 md:w-1/3">
+                <div class="text-blue-200">
+                    <img class="h-20" src="images/parking.svg" alt="House plan">
+                </div>
+                <p class="italic text-sm text-gray-800 font-semibold pt-4 pb-6 leading-loose">Spacious Parking</p>
+            </div>
+            <div class="w-1/2 md:w-1/3">
+                <div class="text-blue-200">
+                    <img class="h-20" src="images/room (1).svg" alt="House plan">
+                </div>
+                <p class="italic text-sm text-gray-800 font-semibold pt-4 pb-6 leading-loose">22 modern & luxurious<br> Rooms</p>
+            </div>
+        </section>
+        <!-- Amenities section end  -->
+
+        <!-- Customer section -->
+        <section>
+            <div class="text-center px-20 py-12">
+                <h1 class="font-bold text-2xl uppercase">What Our customer says</h1>
+                <p class="italic text-base pt-4 text-gray-800">We've put together a list of what customers say is most important for them in<br> their restaurant experience.<span class=" text-gray-800 font-bold not-italic">READ ALL REVIEWS</span> </p>
+            </div>
+            <div class="flex-col space-between w-full px-6 py-4 md:flex-col lg:flex lg:flex-row">
+                <div class="border border-yellow-800 p-12 w-full lg:w-2/5 m-2 md:w-full">
+                    <div class="text-left pb-4 ">
+                        <img class="h-12" src="images/quote.svg" alt="Quotation-mark">
+                    </div>
+                    <p class="italic text-center text-gray-900">
+                        “Amazing restaurant, Nice place to visit and arrange a any kind of function or parties, also food is so fresh & testy, i love this place”
+                    </p>
+                    <p class="font-bold text-center pt-4 uppercase">- Anna Larsen</p>
+                </div>
+                <div class="border border-yellow-800 p-12 w-full lg:w-2/5 m-2 md:w-full ">
+                    <div class="text-left pb-4 ">
+                        <img class="h-12" src="images/quote.svg" alt="Quotation-mark">
+                    </div>
+                    <p class="italic text-center text-gray-900">
+                        “Great food, best I've had in Dorset and great staff, well worth the journey, i like to recommend to my friends and family”
+                    </p>
+                    <p class="font-bold pt-4 text-center">- TERENCE NICKS</p>
+                </div>
+                <div class="border border-yellow-800 lg:w-2/5 w-full p-12 m-2 md:w-full">
+                    <div class="text-left pb-4 ">
+                        <img class="h-12" src="images/quote.svg" alt="Quotation-mark">
+                    </div>
+                    <p class="italic text-center text-gray-900">
+                        “My first visit to kitchen was wonderful, I will come back again for the food and of course the entertainment”
+                    </p>
+                    <p class="font-bold pt-4 text-center">- JAMES FINNEY</p>
+                </div>
+            </div>
+        </section>
+        <!-- customer section end -->
+
+        <!-- Events section -->
+        <section class=" block h-auto md:flex lg:flex-no-wrap md:flex-wrap md-h-auto pt-10 mb-30 h-64">
+            <div class="md:w-1/2 lg:w-1/3 h-64 ">
+                <div class="bg-cover bg-center  h-full w-full  flex justify-center items-end lg:justify-center lg:items-center  md:items-end md:justify-center " style='background-image: url("images/card 1.jpg")'>
+                    <div class="bg-white w-1/2  mb-2 px-4 py-3 md:mb-4">
+                        <h1 class="font-bold text-lg uppercase">Party</h1>
+                        <p class="text-xs italic">Aenean ultrices liberoquis eratretium efficitu Interdum et malesuada fames acante ipsum primis in faucinhac habitasse platea.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:w-1/2 lg:w-1/3 h-64 ">
+                <div class="bg-cover bg-center h-full w-full flex justify-center items-end lg:justify-center lg:items-center md:items-end md:justify-center " style='background-image: url("images/card 2.jpg")'>
+                    <div class="bg-white w-1/2  mb-2 px-4 py-3 md:mb-4">
+                        <h1 class="font-bold text-lg uppercase">Wedding</h1>
+                        <p class="text-xs italic">Aenean ultrices liberoquis eratretium efficitu Interdum et malesuada fames acante ipsum primis in faucinhac habitasse platea.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 lg:w-1/3 h-64 ">
+                <div class="bg-cover bg-center h-full w-full  flex justify-center items-end lg:justify-center lg:items-center  md:items-end md:justify-center " style='background-image: url("images/card 3.jpg")'>
+                    <div class="bg-white w-1/2 px-4  mb-2 py-3 md:mb-4 ">
+                        <h1 class="font-bold text-lg uppercase">Cooperate event</h1>
+                        <p class="text-xs italic">Aenean ultrices liberoquis eratretium efficitu Interdum et malesuada fames acante ipsum primis in faucinhac habitasse platea.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 lg:w-1/3 h-64 ">
+                <div class="bg-cover bg-center h-full w-full  flex justify-center items-end lg:justify-center lg:items-center  md:items-end md:justify-center " style='background-image: url("images/card 4.jpg")'>
+                    <div class="bg-white w-1/2 px-4  mb-2 py-3 md:mb-4 ">
+                        <h1 class="font-bold text-lg uppercase">Birthday Parties</h1>
+                        <p class="text-xs italic">Aenean ultrices liberoquis eratretium efficitu Interdum et malesuada fames acante ipsum primis in faucinhac habitasse platea.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- Events section end -->
+
+        <!-- Call to Action section -->
+        <section class=" lg:block bg-pink-100 p-12">
+            <div class="flex flex-col justify-center text-center lg:flex-row lg:space-around items-center mb-8">
+                <div class="w-full md:w-1/2 lg:w-1/3 ">
+                    <img class="rounded-full h-18 mb-2 ml-48 md:ml-20 lg:ml-20 mt-8 md:h-22 lg:" src="images/Dollar image.jpg" alt="Lunch Picture">
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/3">
+                    <h1 class="text-4xl text-gray-600 font-bold">$15.99</h1>
+                    <h1 class="uppercase font-bold py-2 text-2xl">Unlimited Lunch Offer</h1>
+                    <p class="italic">Special Savings for a limited time only! enjoy our classic lunchof unlimited breadsticks, salad, homemade soup.</p>
+                </div>
+                <div class="w-full mt-4 md:w-full lg:w-1/3 text-center">
+                    <button class="border-2 transition ease-in-out duration-200 border-green-900 bg-white text-green-800 px-8 py-4 .cursor-pointer hover:bg-green-900 hover:text-green-100 ">Call To Action Button</button>
+                </div>
+            </div>
+        </section>
+        <!-- call to action section end -->
+
+        <!-- Map section -->
+        <section>
+            <div class="rounded-lg overflow-hidden">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28946.83298754197!2d67.11914287982452!3d24.92000344789554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb338fa00456acf%3A0x7a277bdfeb6b99aa!2sGulistan-e-Johar%2C%20Karachi%2C%20Karachi%20City%2C%20Sindh%2C%20Pakistan!5e0!3m2!1sen!2s!4v1591911536628!5m2!1sen!2s"
+                    width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </section>
+        <!-- map section ends -->
+        <!-- reservation section -->
+        <section class="flex flex-col">
+            <div class="p-6">
+                <h1 class="uppercase font-bold text-3xl border-b-2 border-gray-300 px-6 py-8">Make A Reservation</h1>
+            </div>
+            <div class="flex  md:flex lg:flex ">
+                <div class="w-full md:w-1/3 mb-4 border-r-2 border-gray-300">
+                    <div class="text-center">
+                        <div class="flex p-6">
+                            <i class="text-3xl ml-4 text-blue-500  fas fa-clock"></i>
+                            <h1 class="uppercase ml-4  font-bold text-lg">Opening hours</h1>
+                        </div>
+                    </div>
+                    <div class="flex space-between px-8">
+                        <p class="italic">
+                            Mon - Tue
+                            <br> Wed - Thu
+                            <br> Fri - Sun
+                        </p>
+                        <p class="italic">
+                            Closed<br> 6:00 - 10:00 Pm
+                            <br>5:30 - 10:00 Pm
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 mb-4 border-r-2 border-gray-300">
+                    <div class="flex p-6 ">
+                        <i class=" text-3xl ml-4 text-blue-500  fas fa-map-marker-alt"></i>
+                        <h1 class="uppercase ml-4  font-bold text-lg">Contact Info</h1>
+                    </div>
+                    <div class="flex flex-col px-8">
+                        <p>
+                            463 Lyon Avenue Milford,<br> Us 01757 info@kitchen.com<br> + 180 - 123 - 4567
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 text-center items-center justify-center">
+                    <button class="border-2 transition ease-in-out duration-200 border-green-900 bg-white text-green-800 px-8 py-4 mt-6 .cursor-pointer hover:bg-green-900 hover:text-green-100 ">Make A Reservation</button>
+                </div>
+            </div>
+        </section>
+        <!-- reservation session end -->
+    </main>
+    <footer>
+        <div class="flex flex-wrap justify-center bg-gray-800 text-gray-200 p-6">
+            <div class="flex flex-wrap mb-4 w-full">
+                <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/5 ">
+                    <h3 class="text-2xl py-4 font-bold">About Us</h3>
+                    <p class="italic text-gray-600 hover:text-gray-200">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/5 pl-8">
+                    <h3 class="text-2xl py-4 font-bold">Quick Links</h3>
+                    <ul>
+                        <li><a href="#" class="italic text-gray-600 hover:text-gray-200">Home</a></li>
+                        <li><a href="#" class="italic text-gray-600 hover:text-gray-200">Blog</a></li>
+                        <li><a href="#" class="italic text-gray-600 hover:text-gray-200">About us</a></li>
+                        <li><a href="#" class="italic text-gray-600 hover:text-gray-200">Customer Reviews</a></li>
+                        <li><a href="#" class="italic text-gray-600 hover:text-gray-200">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/5 ">
+                    <h3 class="text-2xl font-bold py-4">Services</h3>
+                    <ul>
+                        <li><a href="#" class="italic text-gray-600 hover:text-gray-200">Banquet Halls</a></li>
+                        <li><a href="#" class="italic text-gray-600 hover:text-gray-200">Hotel Rooms</a></li>
+                        <li><a href="#" class="italic text-gray-600 hover:text-gray-200">Kitchen Menu</a></li>
+                    </ul>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/5 ">
+                    <h3 class="text-2xl py-4 font-bold">Social Media</h3>
+                    <ul>
+                        <li><a href="#" class="italic text-gray-600 hover:text-gray-200"><i class="fab fa-facebook"></i> FaceBook</a></li>
+                        <li><a href="#" class="italic text-gray-600 hover:text-gray-200"><i class="fab fa-twitter-square"></i> Twitter</a></li>
+                        <li><a href="#" class="italic text-gray-600 hover:text-gray-200"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#" class="italic text-gray-600 hover:text-gray-200"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#" class="italic text-gray-600 hover:text-gray-200"><i class="fab fa-google-plus-square"></i> Gmail</a></li>
+                    </ul>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/5">
+                    <h3 class="text-2xl uppercase font-bold py-4">Newsletter</h3>
+                    <p class="italic text-gray-600 mb-2">Join Us For get Special offers and event announcements.</p>
+                    <form action="#">
+                        <div class="mb-4">
+                            <input class=" appearance-none border-2 border-gray-600 w-11/12 py-4 px-6 text-gray-700 italic leading-tight focus:outline-none bg-gray-800 focus:bg-white focus:border-gray-400" id="inline-full-name" type="text" placeholder="Enter your email address">
+                        </div>
+                        <button class="border-2 border-gray-400 hover:bg-gray-200 hover:text-gray-900 text-gray-200 p-4 ">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bg-gray-900 p-2 pl-6">
+            <p class="text-center text-gray-200 italic">© Copyright 2020 - Template Design & Development by EaseTemplate</p>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
